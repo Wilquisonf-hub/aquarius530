@@ -4,7 +4,9 @@ import {GLTFLoader} from '../vendor/GLTFLoader.js';
 import {createWalkController,FLOOR_SPAWNS} from './walkthrough.js';
 export async function mountFinalModel(config){
  const host=document.querySelector('#model-host'),status=document.querySelector('#model-status');let renderer;
- try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{status.textContent='O navegador não iniciou o 3D. As plantas vetoriais e os arquivos abaixo continuam disponíveis.';return null;}
+ const setReady=state=>{host.dataset.modelState=state;for(const button of document.querySelectorAll('#floor-controls button[data-floor]'))button.disabled=state!=='ready';for(const id of ['reset','top','fullscreen','roof-hypothesis'])document.querySelector('#'+id).disabled=state!=='ready';};
+ setReady('loading');
+ try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{setReady('failed');status.textContent='O navegador não iniciou o 3D. As plantas vetoriais e os arquivos abaixo continuam disponíveis.';return null;}
  const mobile=window.matchMedia('(max-width: 800px)').matches;renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,mobile?1:1.5));renderer.localClippingEnabled=true;host.append(renderer.domElement);
  const scene=new THREE.Scene();scene.background=new THREE.Color('#e8e8e1');
  const camera=new THREE.PerspectiveCamera(42,1,.01,1000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
@@ -33,7 +35,7 @@ export async function mountFinalModel(config){
   fit();if(changed)view();else invalidate();status.textContent=(floor?.label||(mode==='exteriores'?'Terreno / exteriores':'Casa inteira'))+' · arraste para girar; use dois dedos para ampliar ou mover.';
   document.querySelector('#floor-scope').textContent=floor?.note||(mode==='exteriores'?config.exteriorNote:config.note);
  }
- status.textContent='Carregando o modelo integrado F03…';
+ status.textContent='Carregando o modelo integrado F04…';
  try{
   const gltf=await new GLTFLoader().loadAsync(config.url+'?sha='+encodeURIComponent(config.sha256));model=gltf.scene;
   for(const name of config.requiredNodes)if(!model.getObjectByName(name))throw new Error('Missing model node: '+name);
@@ -46,14 +48,16 @@ export async function mountFinalModel(config){
   for(const button of document.querySelectorAll('#floor-controls button[data-floor]'))button.onclick=()=>selectFloor(button.dataset.floor);
   document.querySelector('#roof-hypothesis').onchange=()=>selectFloor(mode);
   document.querySelector('#reset').onclick=()=>view();document.querySelector('#top').onclick=()=>view(true);
+  const fullscreenButton=document.querySelector('#fullscreen');const syncFullscreen=()=>{fullscreenButton.textContent=document.fullscreenElement===document.querySelector('#model-frame')?'Sair da tela cheia':'Tela cheia';};document.addEventListener('fullscreenchange',syncFullscreen);
+  setReady('ready');
   document.querySelector('#fullscreen').onclick=async()=>{const frame=document.querySelector('#model-frame');try{if(document.fullscreenElement)await document.exitFullscreen();else if(frame.requestFullscreen)await frame.requestFullscreen();else{frame.scrollIntoView({block:'start'});status.textContent='Tela cheia não disponível neste navegador. Use o gesto de pinça para aproximar o modelo.';}}catch{status.textContent='Não foi possível entrar em tela cheia neste navegador.';}};
- }catch(error){if(model)scene.remove(model);status.textContent='Não foi possível abrir o modelo F03 validado. Nenhuma geometria antiga ou ilustrativa foi substituída. Consulte as plantas e downloads.';console.error(error);}
+ }catch(error){if(model)scene.remove(model);model=null;setReady('failed');status.textContent='Não foi possível carregar o modelo 3D. Recarregue a página ou consulte as plantas e os downloads abaixo.';console.error(error);observer.disconnect?.();controls.dispose?.();renderer.dispose?.();active=false;if(frame)cancelAnimationFrame(frame);return null;}
  invalidate();
  const updateActive=()=>{active=!document.hidden&&inViewport;if(!active)walker?.pause();if(!active&&frame){cancelAnimationFrame(frame);frame=0;}if(active)invalidate();};
  document.addEventListener('visibilitychange',updateActive);
  new IntersectionObserver(entries=>{inViewport=entries[0].isIntersecting;updateActive();},{rootMargin:'100px'}).observe(host);
  return {selectFloor,getFloor:()=>mode,
-  focusRoom(room){if(room.navigable===false||!room.focus){status.textContent='Ambiente catalogado como evidência, ainda sem geometria 3D validada.';return false;}if(walker?.enabled)walker.exit();selectFloor(room.floor);const p=new THREE.Vector3(...room.focus);controls.target.copy(p);const span=room.bounds?Math.max(room.bounds.max[0]-room.bounds.min[0],room.bounds.max[2]-room.bounds.min[2]):5;const distance=THREE.MathUtils.clamp(span*.8,2.2,8);camera.position.copy(p).add(new THREE.Vector3(distance*.8,distance,distance));const damping=controls.enableDamping;controls.enableDamping=false;controls.update();controls.enableDamping=damping;invalidate();},
-  enterRoom(room){if(room.navigable===false||!room.entry){status.textContent='Ambiente catalogado como evidência, ainda sem geometria 3D validada.';return false;}const ok=walker?.enter(room.entry,room.label+(room.floor==='cobertura'?' (transferência; acesso por escada não verificado)':''),room.bounds);if(ok)walkFloor=room.floor;return ok;},
+  focusRoom(room){if(!model)return false;if(room.navigable===false||!room.focus){status.textContent='Ambiente catalogado como evidência, ainda sem geometria 3D validada.';return false;}if(walker?.enabled)walker.exit();selectFloor(room.floor);const p=new THREE.Vector3(...room.focus);controls.target.copy(p);const span=room.bounds?Math.max(room.bounds.max[0]-room.bounds.min[0],room.bounds.max[2]-room.bounds.min[2]):5;const distance=THREE.MathUtils.clamp(span*.8,2.2,8);camera.position.copy(p).add(new THREE.Vector3(distance*.8,distance,distance));const damping=controls.enableDamping;controls.enableDamping=false;controls.update();controls.enableDamping=damping;invalidate();return true;},
+  enterRoom(room){if(!model||!walker)return false;if(room.navigable===false||!room.entry){status.textContent='Ambiente catalogado como evidência, ainda sem geometria 3D validada.';return false;}const ok=walker?.enter(room.entry,room.label+(room.floor==='cobertura'?' (transferência; acesso por escada não verificado)':''),room.bounds);if(ok)walkFloor=room.floor;return ok;},
   exitWalk(){walker?.exit();},isWalking:()=>!!walker?.enabled};
 }

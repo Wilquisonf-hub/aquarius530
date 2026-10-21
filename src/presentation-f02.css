@@ -18,3 +18,34 @@
 
 /* Aquarius 530: property identity, with a discreet production signature. */
 .editorial-f02 .brand-symbol{font-size:30px;letter-spacing:-.085em;font-weight:500}.editorial-f02 .brand{min-width:190px}.editorial-f02 .production-credit{font-size:9px!important;color:#a8afa0}.editorial-f02 .heywill-mark{width:32px;height:30px;border-radius:8px}.editorial-f02 .heywill-mark img{width:24px;height:15px}@media(max-width:760px){.editorial-f02 .brand{min-width:0}.editorial-f02 .brand-symbol{font-size:28px}}
+
+/* F04 final interaction polish: preserve the editorial composition. */
+.editorial-f02 .primary-nav a{font-size:12px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.editorial-f02 .primary-nav{overflow-x:auto;min-width:0}
+#motion-toggle{font-size:11px;min-height:44px;padding:8px 4px}
+.editorial-f02 .hero-view-switch button{font-size:12px;min-height:44px;padding:10px 12px;white-space:normal}
+.editorial-f02 .model-toolbar button{font-size:12px;min-height:44px}
+.editorial-f02 .download-row a{font-size:12px;min-height:44px}
+.editorial-f02 .light-section,.chapter-section,.renovation-roadmap,.closing-spread,#plan-dialog{--focus:#425b32}
+.editorial-f02 .light-section .download-row a:hover{color:#415a2e}
+.editorial-f02 .model-toolbar button:disabled,#plan-dialog button:disabled{opacity:.5;cursor:not-allowed}
+.editorial-f02 .model-notes label{min-height:44px}
+.editorial-f02 .model-notes input:disabled{cursor:not-allowed}
+@media(max-width:760px){.editorial-f02 .primary-nav a{font-size:12px;min-height:44px;padding:10px 0}.editorial-f02 .hero-view-switch button{font-size:11px;min-height:44px}.editorial-f02 .model-toolbar button{font-size:12px}.editorial-f02 .download-row a{font-size:12px}.reading-progress{top:112px}.editorial-f02 .public-section,.renovation-roadmap,#ambientes,#downloads{scroll-margin-top:120px}}
+/* Evidence labels and help remain legible without changing display typography. */
+#motion-toggle{font-size:12px}
+.editorial-f02 .hero-view-switch{height:auto;min-height:44px}
+.editorial-f02 .hero-topline,.editorial-f02 .hero-file-label{font-size:11px}
+.chapter-image figcaption,.chapter-list a small{font-size:12px}
+.editorial-f02 #model-status,.editorial-f02 .model-notes,.editorial-f02 .scope,.editorial-f02 .plan-card p,.editorial-f02 .photo-grid figcaption,.editorial-f02 .original-group h3{font-size:12px}
+.roadmap-dependency>span{font-size:11px;color:#536347}
+@media(max-width:760px){.editorial-f02 .hero-view-switch button{font-size:12px;flex:1;min-width:0}.editorial-f02 .hero-topline{font-size:10px;letter-spacing:.03em}.editorial-f02 .hero-file-label{font-size:10px}.chapter-image figcaption,.chapter-list a small{font-size:12px}.editorial-f02 .review-columns ul,.roadmap-item p,.rooftop-sequence p,.roadmap-gate p{font-size:12px}.editorial-f02 .hero-topline>span{overflow-wrap:anywhere}.editorial-f02 .facade-hero{padding-top:68px}}
+/* Detector follow-through: retain figure styling, improve contrast and labels. */
+.editorial-f02 .skip{background:#111210;color:#e9e5db;border:1px solid #c2ceac}
+.roadmap-number{color:#536347}
+.roadmap-priority .roadmap-number{color:#bbcfa6}
+.figure-heading,.editorial-f02 .section-intro .eyebrow,.roadmap-kicker,.rooftop-sequence li>span,.roadmap-gate>span,.editorial-f02 .hero-rail-note span,.editorial-f02 .manifesto-foot>span{font-size:10px}
+.editorial-f02 .hero-index{font-size:10px}
+.editorial-f02 .page-footer>span{font-size:10px}
+.editorial-f02 .page-footer>a,.editorial-f02 .production-credit{font-size:12px!important;min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:760px){.figure-heading,.editorial-f02 .section-intro .eyebrow{font-size:10px}.editorial-f02 .brand small{font-size:9px}}
