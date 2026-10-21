@@ -1,0 +1,418 @@
+{
+  "revision": "F04",
+  "ready": true,
+  "model": {
+    "url": "assets/final/aquarius530-f04.glb",
+    "sha256": "23a0b9de58057d1d8cda2a9c7f5320ae92667c6f951c1f7e294e42b487971903",
+    "note": "Reconstrução documental integrada para conferência. Volumes fotográficos do rooftop são aproximados e separados. Não substitui levantamento em campo ou projeto executivo.",
+    "requiredNodes": [
+      "FACHADA_EXTERIOR_UNIFICADA",
+      "PAVIMENTO_GARAGEM",
+      "PAVIMENTO_TERREO",
+      "PAVIMENTO_SUPERIOR",
+      "COBERTURA_BASE_DOCUMENTAL",
+      "COBERTURA_HIPOTESE_FOTOGRAFICA",
+      "JANELA_ESCADA_ENTRE_PISOS",
+      "EXTERIORES_F02"
+    ],
+    "floors": {
+      "garagem": {
+        "label": "Garagem",
+        "range": [
+          -2.85,
+          0.15
+        ],
+        "groups": [
+          "PAVIMENTO_GARAGEM"
+        ],
+        "note": "Depósito em L, fechamentos e intradorso inclinado até o fim da escada."
+      },
+      "terreo": {
+        "label": "Térreo",
+        "range": [
+          0.15,
+          3.44
+        ],
+        "groups": [
+          "PAVIMENTO_TERREO"
+        ],
+        "note": "Paredes conciliadas com o superior; recorte do piso e jardim com quatro colunas."
+      },
+      "superior": {
+        "label": "Superior",
+        "range": [
+          3.44,
+          6.29
+        ],
+        "groups": [
+          "PAVIMENTO_SUPERIOR"
+        ],
+        "note": "Portas de correr, janelas em L, circulação reta e guarda-corpos de vidro."
+      },
+      "cobertura": {
+        "label": "Rooftop",
+        "range": [
+          6.29,
+          11.0
+        ],
+        "groups": [
+          "COBERTURA_BASE_DOCUMENTAL"
+        ],
+        "note": "Base documental + volumes fotográficos aproximados. Não é levantamento as-built."
+      }
+    },
+    "contextGroups": {
+      "ESCADA_GARAGEM": [
+        "terreo",
+        "garagem"
+      ],
+      "ESCADA_PRINCIPAL": [
+        "superior",
+        "terreo"
+      ],
+      "CONTEXTO_EXTERNO": [
+        "terreo"
+      ],
+      "CONTEXTO_GARAGEM": [
+        "garagem"
+      ],
+      "JANELA_ESCADA_ENTRE_PISOS": [
+        "superior",
+        "terreo"
+      ],
+      "EXTERIORES_F02": [
+        "garagem",
+        "terreo"
+      ]
+    },
+    "hypothesisGroups": [
+      "COBERTURA_HIPOTESE_FOTOGRAFICA"
+    ],
+    "exteriorNote": "Terreno e casa sem corte por nível: piscina no térreo, grama sintética, rampa, jardim frontal e acesso lateral. Dimensões não medidas e trechos inferidos exigem conferência em campo."
+  },
+  "modelDownloads": [
+    {
+      "label": "CAD completo · DWG 2018",
+      "path": "assets/final/casa-completa-f04-todos-pavimentos.dwg",
+      "download": true
+    },
+    {
+      "label": "CAD completo · DXF",
+      "path": "assets/final/casa-completa-f04-todos-pavimentos.dxf",
+      "download": true
+    },
+    {
+      "label": "Modelo 3D · GLB",
+      "path": "assets/final/aquarius530-f04.glb",
+      "download": true
+    },
+    {
+      "label": "Projeto Blender · BLEND",
+      "path": "assets/final/aquarius530-f04.blend",
+      "download": true
+    },
+    {
+      "label": "Pavimentos e terreno · PDF vetorial",
+      "path": "assets/final/casa-completa-f04-todos-pavimentos.pdf"
+    },
+    {
+      "label": "Baixar projeto completo · ZIP",
+      "path": "https://github.com/Wilquisonf-hub/aquarius530/archive/refs/heads/main.zip",
+      "download": false
+    }
+  ],
+  "plans": [
+    {
+      "label": "Garagem · B04",
+      "note": "Depósito sob a escada e acesso lateral à piscina acrescentado; abertura lateral aproximada.",
+      "preview": "assets/final/pavimento-garagem-b04-exportado-do-cad.svg",
+      "files": [
+        {
+          "label": "Abrir PDF vetorial",
+          "path": "assets/final/pavimento-garagem-b04-exportado-do-cad.pdf"
+        },
+        {
+          "label": "Baixar CAD · DXF",
+          "path": "assets/final/pavimento-garagem-b04.dxf",
+          "download": true
+        },
+        {
+          "label": "Abrir SVG",
+          "path": "assets/final/pavimento-garagem-b04-exportado-do-cad.svg"
+        }
+      ],
+      "id": "garagem"
+    },
+    {
+      "label": "Térreo · G03",
+      "note": "Paredes conciliadas com o superior; recorte do piso e jardim com quatro colunas.",
+      "preview": "assets/final/pavimento-terreo-g03-exportado-do-cad.svg",
+      "files": [
+        {
+          "label": "Abrir PDF vetorial",
+          "path": "assets/final/pavimento-terreo-g03-exportado-do-cad.pdf"
+        },
+        {
+          "label": "Baixar CAD · DXF",
+          "path": "assets/final/pavimento-terreo-g03.dxf",
+          "download": true
+        },
+        {
+          "label": "Abrir SVG",
+          "path": "assets/final/pavimento-terreo-g03-exportado-do-cad.svg"
+        }
+      ],
+      "id": "terreo"
+    },
+    {
+      "label": "Superior · R08",
+      "note": "Portas de correr, janelas em L, circulação reta e guarda-corpos de vidro.",
+      "preview": "assets/final/pavimento-superior-r08-exportado-do-cad.svg",
+      "files": [
+        {
+          "label": "Abrir PDF vetorial",
+          "path": "assets/final/pavimento-superior-r08-exportado-do-cad.pdf"
+        },
+        {
+          "label": "Baixar CAD · DXF",
+          "path": "assets/final/pavimento-superior-r08.dxf",
+          "download": true
+        },
+        {
+          "label": "Abrir SVG",
+          "path": "assets/final/pavimento-superior-r08-exportado-do-cad.svg"
+        }
+      ],
+      "id": "superior"
+    },
+    {
+      "label": "Rooftop · C04",
+      "note": "R01 preservado com cerca de 3,30 m. R02 com 2 m de largura e profundidades aproximadas de 2,50 m e 1,50 m, dentro do limite externo da cobertura.",
+      "preview": "assets/final/aquarius530-cobertura-c04.svg",
+      "files": [
+        {
+          "label": "Abrir PDF vetorial",
+          "path": "assets/final/aquarius530-cobertura-c04.pdf"
+        },
+        {
+          "label": "Baixar CAD · DXF",
+          "path": "assets/final/aquarius530-cobertura-c04.dxf",
+          "download": true
+        },
+        {
+          "label": "Abrir SVG",
+          "path": "assets/final/aquarius530-cobertura-c04.svg"
+        }
+      ],
+      "id": "cobertura"
+    },
+    {
+      "label": "Terreno / exteriores · F02",
+      "note": "Piscina no térreo, grama sintética, rampa, jardim e acesso lateral. Reconstrução de referência, com trechos estimados.",
+      "preview": "assets/final/exteriores-f02-exportado-do-cad.svg",
+      "files": [
+        {
+          "label": "Abrir PDF vetorial",
+          "path": "assets/final/exteriores-f02-exportado-do-cad.pdf"
+        },
+        {
+          "label": "Baixar CAD · DXF",
+          "path": "assets/final/exteriores-f02.dxf",
+          "download": true
+        },
+        {
+          "label": "Abrir SVG",
+          "path": "assets/final/exteriores-f02-exportado-do-cad.svg"
+        }
+      ],
+      "id": "exteriores"
+    }
+  ],
+  "photos": [
+    {
+      "path": "assets/photos/IMG_2770.jpeg",
+      "label": "Fachada existente",
+      "alt": "Fachada existente",
+      "note": "Fotografia real. Não confundir com o estudo visual por IA da abertura."
+    },
+    {
+      "path": "assets/photos/IMG_2753.jpeg",
+      "label": "Rooftop · relação entre volumes",
+      "alt": "Rooftop · relação entre volumes",
+      "note": "Duas construções, ressaltos envidraçados e passagem. Posições exatas ainda dependem de levantamento."
+    },
+    {
+      "path": "assets/photos/IMG_2758.jpeg",
+      "label": "Rooftop · volume com veneziana",
+      "alt": "Rooftop · volume com veneziana",
+      "note": "Referência da face posterior e relação com os painéis laterais."
+    },
+    {
+      "path": "assets/photos/IMG_2760.jpeg",
+      "label": "Rooftop · volume com recuos",
+      "alt": "Rooftop · volume com recuos",
+      "note": "Planos de parede e ressaltos visíveis; topos e espaços internos não confirmados."
+    },
+    {
+      "path": "assets/photos/IMG_2750.jpeg",
+      "label": "Rooftop · faixa de painéis",
+      "alt": "Rooftop · faixa de painéis",
+      "note": "Cobertura em painéis junto ao volume. Não é escada nem confirmação de piso transitável."
+    },
+    {
+      "path": "assets/photos/ambientes/piscina-grama-existente.jpg",
+      "label": "Piscina e grama sintética · fotografia real",
+      "alt": "Vista real da piscina no térreo com grama sintética ao redor.",
+      "note": "Fotografia existente do conjunto da piscina e seu entorno, não render do modelo."
+    }
+  ],
+  "renders": [
+    {
+      "path": "assets/final/aquarius530-f04-conjunto.png",
+      "label": "Casa e terreno · F04",
+      "alt": "Modelo integrado da casa e terreno com piscina, rampa e jardim.",
+      "note": "Reconstrução de conferência. Elementos não medidos permanecem aproximados."
+    },
+    {
+      "path": "assets/final/aquarius530-f04-piscina.png",
+      "label": "Piscina no térreo",
+      "alt": "Piscina e entorno com grama sintética no nível térreo.",
+      "note": "Grama sintética conforme informado. Níveis e dimensões a conferir em campo."
+    },
+    {
+      "path": "assets/final/aquarius530-f04-rampa.png",
+      "label": "Rampa e jardim frontal",
+      "alt": "Rampa da garagem e jardim frontal reconstruídos.",
+      "note": "Representação do estado existente, não proposta nova de paisagismo."
+    },
+    {
+      "path": "assets/final/aquarius530-f04-rooftop.png",
+      "label": "Rooftop · proporções revistas",
+      "alt": "Rooftop C04 com profundidade corrigida de R02 e R01 preservado.",
+      "note": "Dimensões aproximadas informadas pelo proprietário; não substituem medição em campo."
+    }
+  ],
+  "reports": [
+    {
+      "label": "Revisão F04 · PDF",
+      "path": "assets/final/relatorio-revisao-f04.pdf"
+    },
+    {
+      "label": "Orientações do CAD consolidado · TXT",
+      "path": "assets/final/LEIA-ME-CAD.txt"
+    },
+    {
+      "label": "Passeio 3D · controles, testes e limites",
+      "path": "assets/final/validacao-passeio-f04.md"
+    }
+  ],
+  "originalPlans": [
+    {
+      "label": "Garagem",
+      "images": [
+        {
+          "path": "assets/originais/planta-2211.jpg",
+          "thumbnail": "assets/originais/planta-2211-thumb.webp",
+          "label": "Garagem / pavimento inferior",
+          "note": "Fotografia da planta histórica. Identificador de rua ocultado; cotas preservadas."
+        }
+      ]
+    },
+    {
+      "label": "Térreo",
+      "images": [
+        {
+          "path": "assets/originais/planta-2212.jpg",
+          "thumbnail": "assets/originais/planta-2212-thumb.webp",
+          "label": "Térreo / tomada 1",
+          "note": "Fotografia da planta histórica. Identificador de rua ocultado; cotas preservadas."
+        },
+        {
+          "path": "assets/originais/planta-2213.jpg",
+          "thumbnail": "assets/originais/planta-2213-thumb.webp",
+          "label": "Térreo / tomada 2",
+          "note": "Fotografia da planta histórica. Identificador de rua ocultado; cotas preservadas."
+        }
+      ]
+    },
+    {
+      "label": "Superior",
+      "images": [
+        {
+          "path": "assets/originais/planta-2214.jpg",
+          "thumbnail": "assets/originais/planta-2214-thumb.webp",
+          "label": "Dormitórios / pavimento superior",
+          "note": "Fotografia da planta histórica. Identificador de rua ocultado; cotas preservadas."
+        }
+      ]
+    },
+    {
+      "label": "Rooftop",
+      "images": [
+        {
+          "path": "assets/originais/planta-2216.jpg",
+          "thumbnail": "assets/originais/planta-2216-thumb.webp",
+          "label": "Cobertura / planta histórica",
+          "note": "Fotografia da planta histórica. Identificador de rua ocultado; cotas preservadas. Não representa integralmente o rooftop atual."
+        }
+      ]
+    },
+    {
+      "label": "Cortes",
+      "images": [
+        {
+          "path": "assets/originais/planta-2217.jpg",
+          "thumbnail": "assets/originais/planta-2217-thumb.webp",
+          "label": "Corte A-A",
+          "note": "Fotografia da planta histórica. Imagem sem alteração dos traçados."
+        },
+        {
+          "path": "assets/originais/planta-2218.jpg",
+          "thumbnail": "assets/originais/planta-2218-thumb.webp",
+          "label": "Cortes B-B e C-C",
+          "note": "Fotografia da planta histórica. Imagem sem alteração dos traçados."
+        }
+      ]
+    },
+    {
+      "label": "Fachadas",
+      "images": [
+        {
+          "path": "assets/originais/planta-2219.jpg",
+          "thumbnail": "assets/originais/planta-2219-thumb.webp",
+          "label": "Fachada lateral esquerda",
+          "note": "Fotografia da planta histórica. Imagem sem alteração dos traçados."
+        }
+      ]
+    },
+    {
+      "label": "Detalhes complementares",
+      "images": [
+        {
+          "path": "assets/originais/levantamento-planialtimetrico.jpg",
+          "thumbnail": "assets/originais/levantamento-planialtimetrico.webp",
+          "label": "Levantamento planialtimétrico · referência histórica",
+          "note": "Recorte documental; cotas e desenho preservados. Texto pequeno limitado pela resolução da foto original. Identificadores de rua, quadra e lotes ocultados quando presentes."
+        },
+        {
+          "path": "assets/originais/detalhe-degrau-escada.jpg",
+          "thumbnail": "assets/originais/detalhe-degrau-escada.webp",
+          "label": "Detalhe do degrau da escada",
+          "note": "Recorte documental; cotas e desenho preservados. Texto pequeno limitado pela resolução da foto original. Identificadores de rua, quadra e lotes ocultados quando presentes."
+        },
+        {
+          "path": "assets/originais/corte-casa-maquinas.jpg",
+          "thumbnail": "assets/originais/corte-casa-maquinas.webp",
+          "label": "Corte longitudinal da casa de máquinas",
+          "note": "Recorte documental; cotas e desenho preservados. Texto pequeno limitado pela resolução da foto original. Identificadores de rua, quadra e lotes ocultados quando presentes."
+        },
+        {
+          "path": "assets/originais/detalhe-piscina.jpg",
+          "thumbnail": "assets/originais/detalhe-piscina.webp",
+          "label": "Detalhe da piscina",
+          "note": "Recorte documental; cotas e desenho preservados. Texto pequeno limitado pela resolução da foto original. Identificadores de rua, quadra e lotes ocultados quando presentes."
+        }
+      ]
+    }
+  ]
+}

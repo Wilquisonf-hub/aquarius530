@@ -1,0 +1,10 @@
+{
+  "name": "aquarius530",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check src/final-page.js && node --check src/final-model.js && node scripts/validate.mjs && node scripts/check-model.mjs && node scripts/check-viewer.mjs && node scripts/check-camera-regression.mjs && node --check src/room-navigation.js && node scripts/check-room-navigation.mjs && node --check src/walkthrough.js && node --check src/walkthrough-physics.js && node scripts/check-walkthrough.mjs && node scripts/check-walkthrough-controls.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}

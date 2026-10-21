@@ -1,0 +1,7 @@
+Aquarius530 — CAD COMPLETO F04
+
+Unidades em metros, desenho 1:1. Os pavimentos e a implantação estão em blocos nativos separados e em camadas identificadas por prefixo. Cada bloco conserva a origem local de sua fonte; as inserções no Model Space foram transladadas para leitura sem sobreposição. Deslocamentos das inserções (X, Y), em metros: garagem (0, 0); térreo (55, 0); superior (0, -40); rooftop (55, -40); implantação (0, -80). Para sobrepor pavimentos, mantenha os blocos e redefina suas inserções para (0, 0, 0).
+
+R01 tem largura aproximada de 3,30 m; R02 mantém largura aproximada de 2,00 m, com profundidades aproximadas de 2,50 m no ramo maior e 1,50 m no ramo menor, integralmente dentro do perímetro da cobertura, conforme orientação do proprietário. O rooftop e parte dos exteriores foram reconstruídos com medidas estimadas e não constituem levantamento cadastral certificado. Espessuras, níveis, perímetro atual, acessos e instalações precisam de conferência da arquiteta. Não é projeto executivo nem autorização para obra.
+
+Os três pavimentos interiores preservam os traçados B04/G03/R08. A implantação complementa o conjunto com piscina, entorno, rampa e jardim. Fotos de referência não estão incorporadas como vetores.
