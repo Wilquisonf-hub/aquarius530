@@ -1,0 +1,348 @@
+{
+  "version": 1,
+  "stage": {
+    "id": "etapa-1",
+    "number": "01",
+    "title": "Rooftop",
+    "status": "Em planejamento",
+    "start": "A confirmar",
+    "hiring": "A confirmar",
+    "summary": "Organizar o escopo, conferir o existente e preparar a execução da cobertura.",
+    "nextStep": "Definir responsabilidades de escopo e materiais e validar o plano técnico antes de iniciar os serviços.",
+    "progress": null,
+    "managementNote": "Conteúdo mantido centralmente. O empreiteiro consulta os registros; edição compartilhada e envio de informações pelo site ainda não estão disponíveis.",
+    "technicalNote": "R01, R02 e terraço permanecem referências aproximadas. Plantas, fotografias e modelo servem para localização e conferência; não são autorização técnica de execução.",
+    "scopeNote": "Piso acabado, reposição dos painéis do boiler, cozinha molhada e pergolado precisam de detalhamento e confirmação de inclusão no escopo contratado."
+  },
+  "statuses": [
+    "A definir",
+    "Pronto para executar",
+    "Em execução",
+    "Aguardando conferência",
+    "Aceito"
+  ],
+  "responsibilities": [
+    {
+      "role": "Proprietário",
+      "scope": "Aprovar o escopo e o orçamento e definir as responsabilidades de compra e contratação."
+    },
+    {
+      "role": "Responsável técnico",
+      "scope": "Validar soluções, conferir os serviços técnicos e registrar o aceite conforme o projeto e as verificações aplicáveis."
+    },
+    {
+      "role": "Empreiteiro",
+      "scope": "Executar o escopo autorizado e fornecer os registros necessários à conferência."
+    },
+    {
+      "role": "Assistente de organização",
+      "scope": "Organizar informações, pendências e evidências fornecidas. Não realiza inspeção presencial nem aceite técnico."
+    }
+  ],
+  "packages": [
+    {
+      "id": "levantamento",
+      "number": "01",
+      "title": "Medição, layout e escopo técnico",
+      "location": "Rooftop completo · R01, R02 e terraço",
+      "scope": "Conferir medidas, níveis e condições existentes; localizar infiltrações e drenagem; compatibilizar layout, ancoragens e passagens da cozinha, pergolado e boiler antes da impermeabilização. Definir o que será executado e quem fornece cada material.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": [],
+      "status": "A definir",
+      "blocker": "Levantamento em campo, layout e responsabilidades ainda precisam ser definidos.",
+      "acceptance": "A definir com o responsável técnico: levantamento conferido e escopo compatibilizado, com registro das decisões do proprietário.",
+      "evidence": [],
+      "sourceIds": ["planta-rooftop", "foto-volumes", "foto-recuos", "planta-historica"]
+    },
+    {
+      "id": "demolicao",
+      "number": "02",
+      "title": "Demolição, proteção e entulho",
+      "location": "Trechos do rooftop a delimitar no plano técnico",
+      "scope": "Definir proteções, isolamento, percurso de retirada e destinação do entulho. Retirada de platibandas ou claraboias, fechamento de vãos com laje e intervenção em viga são apenas propostas de escopo: dependem de avaliação e aprovação profissional específica antes de qualquer execução.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": ["levantamento"],
+      "status": "A definir",
+      "blocker": "Plano de intervenção e validação profissional pendentes. Nenhuma remoção estrutural está autorizada por este registro.",
+      "acceptance": "A definir com o responsável técnico: limites autorizados documentados, proteções verificadas e retirada de resíduos registrada.",
+      "evidence": [],
+      "sourceIds": ["foto-volumes", "foto-recuos", "planta-rooftop"]
+    },
+    {
+      "id": "base-infraestrutura",
+      "number": "03",
+      "title": "Base, drenagem e infraestrutura",
+      "location": "Base do terraço, ralos e interfaces de cozinha, pergolado e boiler",
+      "scope": "Executar somente as intervenções técnicas aprovadas. Preparar a base, regularização e caimentos anteriores à impermeabilização conforme o sistema especificado; compatibilizar drenagem, instalações, passagens e ancoragens. A proteção mecânica ou contrapiso sobre a impermeabilização, quando previsto, ocorre depois do teste e do aceite do sistema.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": ["levantamento", "demolicao"],
+      "status": "A definir",
+      "blocker": "Soluções técnicas, sistema de impermeabilização e interfaces ainda precisam de aprovação.",
+      "acceptance": "A definir com o responsável técnico: base, caimentos, ralos e passagens conferidos antes de receber a impermeabilização.",
+      "evidence": [],
+      "sourceIds": ["planta-rooftop", "foto-volumes", "foto-paineis"]
+    },
+    {
+      "id": "impermeabilizacao",
+      "number": "04",
+      "title": "Impermeabilização, teste e aceite",
+      "location": "Áreas e detalhes do rooftop definidos pelo projeto",
+      "scope": "Aplicar o sistema especificado, incluindo encontros, ralos e demais detalhes. Definir inspeção, teste e responsável pela conferência. Registrar resultados e aceite técnico antes de cobrir; executar proteção mecânica posterior somente quando prevista no sistema aprovado.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": ["base-infraestrutura"],
+      "status": "A definir",
+      "blocker": "Sistema, procedimento de teste e responsável pela inspeção ainda não definidos.",
+      "acceptance": "A definir com o responsável técnico: teste e inspeção documentados, eventuais correções verificadas e aceite registrado antes de qualquer cobertura.",
+      "evidence": [],
+      "sourceIds": ["planta-rooftop", "foto-volumes", "foto-recuos"]
+    },
+    {
+      "id": "acabamentos",
+      "number": "05",
+      "title": "Piso, bancos, floreiras e acabamentos",
+      "location": "Terraço, bancos/floreiras e encontros de cobertura a detalhar",
+      "scope": "Detalhar e confirmar inclusão do piso acabado. Compatibilizar bancos e floreiras, se previstos no escopo aprovado, rufos e pintura com a drenagem e o sistema impermeável, preservando acessos de manutenção. Executar as camadas de proteção e assentamento conforme o sistema aprovado e após seu aceite.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": ["impermeabilizacao"],
+      "status": "A definir",
+      "blocker": "Especificações e inclusão dos acabamentos no contrato pendentes; impermeabilização ainda sem aceite registrado.",
+      "acceptance": "A definir com o responsável técnico: caimentos, drenagem, juntas, encontros e integridade do sistema conferidos; acabamentos verificados conforme o escopo aprovado.",
+      "evidence": [],
+      "sourceIds": ["planta-rooftop", "foto-recuos"]
+    },
+    {
+      "id": "equipamentos-entrega",
+      "number": "06",
+      "title": "Boiler, cozinha, pergolado e conferência final",
+      "location": "Faixa de painéis do boiler e áreas de cozinha/churrasqueira/pergolado a confirmar",
+      "scope": "Detalhar a reposição dos painéis do boiler, cozinha molhada, churrasqueira e pergolado e confirmar suas inclusões no escopo. Montar conforme os detalhes compatibilizados antes da impermeabilização, preservando o sistema e o acesso técnico. Realizar verificações funcionais e registrar a lista de pendências antes do encerramento.",
+      "responsible": "A definir",
+      "deadline": "A definir",
+      "dependencies": ["levantamento", "impermeabilizacao", "acabamentos"],
+      "status": "A definir",
+      "blocker": "Layout, detalhes de substituição, fornecedores e escopo contratado ainda precisam de confirmação.",
+      "acceptance": "A definir com os responsáveis técnicos: funcionamento e interfaces conferidos, pendências registradas e respectivas correções verificadas antes do aceite final.",
+      "evidence": [],
+      "sourceIds": ["foto-paineis", "foto-veneziana", "planta-rooftop"]
+    }
+  ],
+  "materialsNote": "Lista provisória para conferência. Não é autorização de compra nem dimensionamento suficiente para executar os serviços. Quantidades recebidas não foram informadas.",
+  "materials": [
+    {
+      "id": "cimento",
+      "name": "Cimento",
+      "quantity": 40,
+      "unit": "sacos",
+      "specification": "A confirmar · tipo e peso por saco não informados.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Quantidade provisória; validar aplicação e dimensionamento."
+    },
+    {
+      "id": "areia",
+      "name": "Areia",
+      "quantity": 400,
+      "unit": "sacos",
+      "specification": "A confirmar · peso, volume por saco e granulometria não informados.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Quantidade provisória; validar unidade e dimensionamento."
+    },
+    {
+      "id": "graute",
+      "name": "Graute",
+      "quantity": 40,
+      "unit": "unidade a confirmar",
+      "specification": "A confirmar · produto, unidade e apresentação não informados.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Não interpretar a quantidade como sacos ou volume sem confirmação."
+    },
+    {
+      "id": "bianco",
+      "name": "Bianco",
+      "quantity": 3,
+      "unit": "baldes de 18 L",
+      "specification": "A confirmar · apresentação informada de 18 L; aplicação e compatibilidade a validar.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Quantidade provisória; não define o sistema de impermeabilização."
+    },
+    {
+      "id": "blocos",
+      "name": "Blocos 14 × 19 × 39",
+      "quantity": 350,
+      "unit": "unidades",
+      "specification": "A confirmar · tipo, função e demais especificações dos blocos não definidos.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Dimensões informadas na lista; conferir especificação e dimensionamento."
+    },
+    {
+      "id": "sika-1",
+      "name": "Sika 1",
+      "quantity": 6,
+      "unit": "baldes",
+      "specification": "A confirmar · capacidade dos baldes, aplicação e compatibilidade não informadas.",
+      "buyer": "A confirmar",
+      "received": null,
+      "status": "A confirmar",
+      "note": "Quantidade provisória; não substitui a especificação técnica do sistema."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "escopo-materiais",
+      "number": "01",
+      "title": "Fechar escopo e responsabilidades de materiais",
+      "detail": "Definir serviços incluídos, exclusões, quem compra e quem recebe cada material. Conferir a lista provisória com o escopo e o dimensionamento.",
+      "owner": "Proprietário · com apoio do responsável técnico e do empreiteiro",
+      "deadline": "A definir",
+      "status": "A definir",
+      "unlocks": ["levantamento", "demolicao"],
+      "evidence": []
+    },
+    {
+      "id": "plano-intervencao",
+      "number": "02",
+      "title": "Validar retiradas e fechamentos propostos",
+      "detail": "Submeter remoções de platibandas e claraboias, fechamento de vãos com laje e intervenção em viga à avaliação profissional. Delimitar o que pode ser executado antes de autorizar demolições.",
+      "owner": "Responsável técnico · escopo a confirmar com o proprietário",
+      "deadline": "A definir",
+      "status": "A definir",
+      "unlocks": ["demolicao", "base-infraestrutura"],
+      "evidence": []
+    },
+    {
+      "id": "sistema-impermeabilizacao",
+      "number": "03",
+      "title": "Especificar a impermeabilização e a conferência",
+      "detail": "Definir sistema, preparação da base e caimentos, detalhes, camadas posteriores, teste, registros e responsável pela inspeção e pelo aceite antes de cobrir.",
+      "owner": "Responsável técnico",
+      "deadline": "A definir",
+      "status": "A definir",
+      "unlocks": ["base-infraestrutura", "impermeabilizacao"],
+      "evidence": []
+    },
+    {
+      "id": "layout-equipamentos",
+      "number": "04",
+      "title": "Compatibilizar cozinha, pergolado e boiler",
+      "detail": "Finalizar layout, ancoragens e passagens antes de impermeabilizar. Detalhar a reposição dos painéis do boiler e confirmar a inclusão da cozinha molhada, churrasqueira, pergolado e piso acabado.",
+      "owner": "Proprietário e responsável técnico · executores a definir",
+      "deadline": "A definir",
+      "status": "A definir",
+      "unlocks": ["levantamento", "base-infraestrutura", "equipamentos-entrega"],
+      "evidence": []
+    },
+    {
+      "id": "contratacao-inicio",
+      "number": "05",
+      "title": "Confirmar contratação e intenção de início",
+      "detail": "Confirmar o responsável pela execução, o escopo contratado e a data pretendida de início, considerando as definições técnicas e as dependências da etapa.",
+      "owner": "Proprietário",
+      "deadline": "A definir",
+      "status": "A definir",
+      "unlocks": ["demolicao"],
+      "evidence": []
+    }
+  ],
+  "contractors": [
+    {
+      "id": "execucao",
+      "role": "Execução da obra",
+      "name": "A definir",
+      "status": "Proposta recebida",
+      "scope": "Escopo e responsabilidades a confirmar antes da contratação.",
+      "nextStep": "Conferir inclusões, exclusões, materiais e condições de início. Contratação a confirmar."
+    },
+    {
+      "id": "tecnico",
+      "role": "Responsável técnico e conferência",
+      "name": "A definir",
+      "status": "A definir",
+      "scope": "Levantamento, soluções técnicas, verificações e aceite dos serviços aplicáveis.",
+      "nextStep": "Definir profissional, atribuições e registros necessários."
+    },
+    {
+      "id": "impermeabilizacao",
+      "role": "Impermeabilização",
+      "name": "A definir",
+      "status": "A definir",
+      "scope": "Aplicação do sistema especificado e registros para inspeção e teste.",
+      "nextStep": "Definir executor e interface com o responsável pelo aceite."
+    },
+    {
+      "id": "complementares",
+      "role": "Boiler, cozinha e pergolado",
+      "name": "A definir",
+      "status": "A definir",
+      "scope": "Detalhamento e execução dos itens complementares, conforme escopo a confirmar.",
+      "nextStep": "Definir soluções, inclusões e responsáveis por cada fornecimento."
+    }
+  ],
+  "diary": [],
+  "diaryNote": "Nenhum relato de execução da obra foi registrado. As fotografias existentes são referências da casa e não comprovam avanço desta etapa.",
+  "planningMilestones": [
+    {
+      "date": "2026-10-27",
+      "type": "Planejamento",
+      "title": "Rooftop definido como Etapa 1",
+      "detail": "Organização inicial de serviços, decisões e materiais provisórios. Este marco não registra início físico nem conclusão de serviços."
+    }
+  ],
+  "sources": [
+    {
+      "id": "planta-rooftop",
+      "label": "Planta de referência · Rooftop C04",
+      "path": "assets/final/aquarius530-cobertura-c04.svg",
+      "type": "Planta de referência",
+      "note": "R01, R02 e terraço com geometria aproximada. Conferir medidas e condições em campo antes de executar."
+    },
+    {
+      "id": "planta-historica",
+      "label": "Planta histórica da cobertura",
+      "path": "assets/originais/planta-2216.jpg",
+      "type": "Documento histórico",
+      "note": "Não representa integralmente o rooftop atual."
+    },
+    {
+      "id": "foto-volumes",
+      "label": "Relação entre os volumes",
+      "path": "assets/photos/IMG_2753.jpeg",
+      "type": "Fotografia existente",
+      "note": "Referência de contexto. Posições exatas dependem de levantamento; não registra avanço desta etapa."
+    },
+    {
+      "id": "foto-veneziana",
+      "label": "Volume com veneziana",
+      "path": "assets/photos/IMG_2758.jpeg",
+      "type": "Fotografia existente",
+      "note": "Face posterior e relação com painéis laterais; não registra avanço desta etapa."
+    },
+    {
+      "id": "foto-recuos",
+      "label": "Volume com recuos",
+      "path": "assets/photos/IMG_2760.jpeg",
+      "type": "Fotografia existente",
+      "note": "Topos e espaços internos não confirmados; não registra avanço desta etapa."
+    },
+    {
+      "id": "foto-paineis",
+      "label": "Faixa de painéis do rooftop",
+      "path": "assets/photos/IMG_2750.jpeg",
+      "type": "Fotografia existente",
+      "note": "Cobertura em painéis junto ao volume. Não confirma piso transitável nem registra avanço desta etapa."
+    }
+  ]
+}
