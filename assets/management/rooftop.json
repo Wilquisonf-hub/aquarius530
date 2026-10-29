@@ -343,6 +343,93 @@
       "path": "assets/photos/IMG_2750.jpeg",
       "type": "Fotografia existente",
       "note": "Cobertura em painéis junto ao volume. Não confirma piso transitável nem registra avanço desta etapa."
+    },
+    {
+      "id": "pergola-ilustracao",
+      "label": "Pergolado · vistas superior e frontal",
+      "path": "assets/management/pergola/pergola-cumaru-vistas-ortogonais.png",
+      "type": "Ilustração esquemática para cotação",
+      "note": "Extraída da folha ilustrada, revisão 04 de 29/10/2026. Sem perspectiva; altura livre, bases e ligações a definir. Não é desenho executivo."
+    },
+    {
+      "id": "pergola-pdf",
+      "label": "Folha ilustrada para cotação · PDF",
+      "path": "assets/management/pergola/pergola-cumaru-folha-ilustrada-cotacao.pdf",
+      "type": "Referência de cotação sem preços",
+      "note": "Revisão 04 de 29/10/2026. Documento de escopo e quantitativo preliminar; não é proposta comercial do fornecedor nem aprovação de execução."
+    },
+    {
+      "id": "pergola-docx",
+      "label": "Folha ilustrada para cotação · DOCX",
+      "path": "assets/management/pergola/pergola-cumaru-folha-ilustrada-cotacao.docx",
+      "type": "Referência editável de cotação sem preços",
+      "note": "Mesmo conteúdo da folha ilustrada de cotação, revisão 04 de 29/10/2026."
     }
-  ]
+  ],
+  "pergola": {
+    "title": "Pergolado",
+    "status": "Em cotação",
+    "species": "Cumaru",
+    "lengthM": 4.5,
+    "widthM": 3,
+    "areaM2": 13.5,
+    "summary": "Alternativa aberta para orçamento em cumaru, com quatro pilares. Dimensões e seções propostas para cotação, sem aprovação de compra ou execução.",
+    "columnsNote": "Quatro pilares: dois livres e dois junto ao R02. O lado do R02 é estimado em 3 m e precisa de medição; não é as-built nem confirmação de apoio ou ancoragem no volume existente.",
+    "stockNote": "Os pilares de 3 m são peças de estoque para cotação. Altura livre e comprimentos finais de corte ainda não definidos.",
+    "spacingNote": "16 linhas transversais, contando 14 travessas internas e 2 extremidades. Aproximadamente 30 cm entre eixos e 25 cm livres entre as internas; vãos junto às extremidades podem diferir. Distribuição, orientação das seções e referências de medição a ajustar no detalhamento.",
+    "plantNote": "Espécie frutífera ainda não escolhida. A referência a parreira no documento não define uma escolha aprovada de vegetação.",
+    "approvalNote": "Seções propostas para cotação, sujeitas à validação estrutural. Não libera compra, corte, montagem ou execução. Não há cortes profundos de meia-madeira autorizados nas vigas principais.",
+    "volumeNote": "Volume geométrico líquido nominal das peças listadas, sem perdas. Não é pedido de compra nem comprovação de capacidade estrutural.",
+    "responsible": "A definir",
+    "deadline": "A definir",
+    "pieces": [
+      {
+        "id": "pilares",
+        "label": "Pilares",
+        "quantity": 4,
+        "sectionCm": [15, 15],
+        "lengthM": 3,
+        "stockNote": "Comprimento de estoque; altura livre a definir.",
+        "volumeM3": 0.27
+      },
+      {
+        "id": "vigas",
+        "label": "Vigas principais",
+        "quantity": 2,
+        "sectionCm": [8, 25],
+        "lengthM": 4.5,
+        "stockNote": "Seção = largura × altura vertical.",
+        "volumeM3": 0.18
+      },
+      {
+        "id": "travessas",
+        "label": "Travessas internas",
+        "quantity": 14,
+        "sectionCm": [5, 12],
+        "lengthM": 3,
+        "stockNote": "Seção = largura × altura vertical.",
+        "volumeM3": 0.252
+      },
+      {
+        "id": "extremidades",
+        "label": "Travessas de extremidade",
+        "quantity": 2,
+        "sectionCm": [8, 20],
+        "lengthM": 3,
+        "stockNote": "Seção = largura × altura vertical.",
+        "volumeM3": 0.096
+      }
+    ],
+    "totalPieces": 22,
+    "netVolumeM3": 0.798,
+    "technicalPending": [
+      "Confirmar fornecedor, disponibilidade, secagem, dimensões após aparelhamento e escopo do fornecimento e da montagem.",
+      "Calcular as cargas de vegetação adulta molhada e frutos, além do vento no rooftop, após definição da espécie e do uso.",
+      "Verificar estabilidade, contraventamentos e ligações entre pilares, vigas e travessas.",
+      "Validar capacidade da laje, bases e apoios; a proximidade do R02 não autoriza sua utilização como apoio estrutural.",
+      "Definir altura livre, cotas finais, comprimentos de corte e condições de montagem.",
+      "Compatibilizar bases, ancoragens e eventuais passagens com o sistema de impermeabilização antes de executar."
+    ],
+    "sourceIds": ["pergola-ilustracao", "pergola-pdf", "pergola-docx"]
+  }
 }

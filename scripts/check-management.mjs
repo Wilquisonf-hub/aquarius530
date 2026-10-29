@@ -66,6 +66,63 @@ assert(data.materials.find(m => m.id === 'bianco').unit.includes('18 L'));
 assert(data.materials.find(m => m.id === 'graute').unit.includes('confirmar'));
 assert(data.contractors.every(c => c.name === 'A definir'));
 assert(data.contractors.some(c => c.status === 'Proposta recebida'));
+
+// The pergola is a quotation alternative within Rooftop, not a seventh work state.
+const pergola = data.pergola;
+assert.equal(pergola.status, 'Em cotação');
+assert.equal(pergola.species, 'Cumaru');
+assert.equal(pergola.lengthM, 4.5);
+assert.equal(pergola.widthM, 3);
+assert.equal(pergola.areaM2, 13.5);
+assert.equal(pergola.areaM2, pergola.lengthM * pergola.widthM);
+assert.equal(pergola.responsible, 'A definir');
+assert.equal(pergola.deadline, 'A definir');
+assert.deepEqual(pergola.pieces.map(p => [p.id, p.quantity, p.sectionCm, p.lengthM]), [
+  ['pilares', 4, [15, 15], 3],
+  ['vigas', 2, [8, 25], 4.5],
+  ['travessas', 14, [5, 12], 3],
+  ['extremidades', 2, [8, 20], 3]
+]);
+let pieceCount = 0, nominalVolume = 0;
+for (const piece of pergola.pieces) {
+  assert(Number.isInteger(piece.quantity) && piece.quantity > 0);
+  assert(piece.sectionCm.length === 2 && piece.sectionCm.every(n => Number.isFinite(n) && n > 0));
+  assert(Number.isFinite(piece.lengthM) && piece.lengthM > 0);
+  assert(typeof piece.stockNote === 'string' && piece.stockNote.trim());
+  const volume = piece.quantity * (piece.sectionCm[0] / 100) * (piece.sectionCm[1] / 100) * piece.lengthM;
+  assert(Math.abs(piece.volumeM3 - volume) < 1e-9, `Incorrect nominal volume: ${piece.id}`);
+  pieceCount += piece.quantity;
+  nominalVolume += volume;
+}
+assert.equal(pergola.totalPieces, 22);
+assert.equal(pergola.totalPieces, pieceCount);
+assert.equal(pergola.netVolumeM3, 0.798);
+assert(Math.abs(pergola.netVolumeM3 - nominalVolume) < 1e-9, 'Incorrect aggregate nominal wood volume');
+assert(pergola.columnsNote.includes('R02') && /medição|medir/.test(pergola.columnsNote));
+assert(/16 linhas/.test(pergola.spacingNote) && /14 travessas/.test(pergola.spacingNote));
+assert(/ainda não escolhida/.test(pergola.plantNote));
+assert(/validação estrutural/.test(pergola.approvalNote));
+assert(/Não libera compra, corte, montagem ou execução/.test(pergola.approvalNote));
+assert(/sem perdas/.test(pergola.volumeNote));
+assert(Array.isArray(pergola.technicalPending) && pergola.technicalPending.length >= 4);
+assert(pergola.technicalPending.every(text => typeof text === 'string' && text.trim()));
+assert(pergola.technicalPending.some(text => /impermeabilização/.test(text)));
+assert(pergola.technicalPending.some(text => /laje/.test(text)));
+assert(pergola.technicalPending.some(text => /vento/.test(text)));
+assert.deepEqual(pergola.sourceIds, ['pergola-ilustracao', 'pergola-pdf', 'pergola-docx']);
+for (const id of pergola.sourceIds) {
+  assert(sourceIds.has(id), `Missing pergola source: ${id}`);
+  const source = data.sources.find(item => item.id === id);
+  assert(source.path.startsWith('assets/management/pergola/'));
+  if (id === 'pergola-ilustracao') {
+    assert(/\.(png|webp|jpe?g|svg)$/.test(source.path));
+    assert(/Ilustração esquemática/.test(source.type));
+    assert(/Não é desenho executivo/.test(source.note), 'Illustration must not imply technical approval');
+  } else {
+    assert(source.path.endsWith(id === 'pergola-pdf' ? '.pdf' : '.docx'));
+    assert(/cotação sem preços/.test(source.type));
+  }
+}
 for (const source of data.sources) {
   assert(/^assets\/[a-zA-Z0-9_./-]+$/.test(source.path) && !source.path.includes('..'));
   assert(!/facade-studies|render|credentials|private|intern[oa]/i.test(source.path), 'Only documentary reference sources');
@@ -142,7 +199,7 @@ function harness({url = 'https://example.test/aquarius530/?andar=cobertura&ambie
   };
   const errors = [];
   const context = vm.createContext({document, window, location, history, URL, URLSearchParams, console:{error:error => errors.push(error)},
-    fetch:async path => { assert.equal(path, 'assets/management/rooftop.json?v=rooftop1'); return {ok:!failure, json:async() => structuredClone(data)}; }
+    fetch:async path => { assert.equal(path, 'assets/management/rooftop.json?v=rooftop2-pergola'); return {ok:!failure, json:async() => structuredClone(data)}; }
   });
   vm.runInContext(script, context, {filename:'src/management.js'});
   const settle = async() => {for (let i = 0; i < 4; i++) await new Promise(resolve => setImmediate(resolve));};
@@ -169,6 +226,9 @@ assertView(h, 'resumo');
 assert.equal(h.host.querySelectorAll('[data-work-tab]').length, 6);
 assert.equal(h.host.querySelectorAll('[data-work-status]').length, 6);
 assert(!h.host.innerHTML.includes('undefined'));
+assert.equal(h.host.querySelectorAll('#pergolado').length, 1);
+assert.equal((h.host.innerHTML.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) || []).length, 4, 'Four pergola quotation rows');
+for (const id of pergola.sourceIds) assert(h.host.innerHTML.includes(data.sources.find(source => source.id === id).path));
 for (let repeat = 0; repeat < 3; repeat++) for (const id of viewIds) {
   const tab = h.nodes.get(`tab-gestao-${id}`); h.click(tab); assertView(h, id);
   assert.equal(h.document.activeElement, tab, 'Tab activation retains the same focusable node');
@@ -199,16 +259,36 @@ assert(h.click(decisionLink).prevented); assertView(h, 'decisoes');
 assert.equal(h.document.activeElement.id, 'decisao-escopo-materiais');
 assert.equal(h.document.activeElement.tabIndex, -1);
 assert(h.document.activeElement.scrollCalls.length > 0);
+h.click(h.nodes.get('tab-gestao-resumo'));
+const pergolaLink = h.host.querySelectorAll('[data-work-view]').find(n => n.dataset.workTarget === 'pergolado');
+assert(pergolaLink, 'Summary must link to the pergola quotation module');
+assert.equal(pergolaLink.getAttribute('href'), '#pergolado');
+assert(h.click(pergolaLink).prevented); assertView(h, 'rooftop');
+assert.equal(h.document.activeElement.id, 'pergolado');
+assert.equal(h.document.activeElement.tabIndex, -1);
+assert(h.document.activeElement.scrollCalls.length > 0);
+assert.equal(h.location.hash, '#pergolado');
+const pergolaParams = new URLSearchParams(h.location.search);
+assert.equal(pergolaParams.get('gestao'), 'rooftop');
+assert.equal(pergolaParams.get('andar'), 'cobertura');
+assert.equal(pergolaParams.get('ambiente'), 'cobertura-r01');
+h.history.back(); assertView(h, 'resumo');
+h.history.forward(); assertView(h, 'rooftop');
+assert.equal(h.location.hash, '#pergolado');
 for (const config of [
   {url:'https://example.test/aquarius530/?andar=cobertura&ambiente=cobertura-r02&gestao=materiais#gestao-rooftop', expected:'rooftop'},
   {url:'https://example.test/aquarius530/?gestao=prestadores', expected:'prestadores'},
   {url:'https://example.test/aquarius530/#gestao-diario', expected:'diario'},
-  {url:'https://example.test/aquarius530/?gestao=desconhecida', expected:'resumo'}
+  {url:'https://example.test/aquarius530/?gestao=desconhecida', expected:'resumo'},
+  {url:'https://example.test/aquarius530/?andar=cobertura&ambiente=cobertura-r02&gestao=rooftop#pergolado', expected:'rooftop'},
+  {url:'https://example.test/aquarius530/#pergolado', expected:'rooftop'},
+  {url:'https://example.test/aquarius530/?gestao=materiais#pergolado', expected:'rooftop'}
 ]) {
   const deep = harness(config); await deep.settle(); assert.equal(deep.errors.length, 0); assertView(deep, config.expected);
-  if (deep.location.hash.startsWith('#gestao-')) assert(deep.nodes.get(deep.location.hash.slice(1)).scrollCalls.length > 0);
+  if (deep.location.hash.startsWith('#gestao-') || deep.location.hash === '#pergolado') assert(deep.nodes.get(deep.location.hash.slice(1)).scrollCalls.length > 0);
 }
 h.location.hash = '#gestao-materiais'; h.dispatchWindow('hashchange'); assertView(h, 'materiais');
+h.location.hash = '#pergolado'; h.dispatchWindow('hashchange'); assertView(h, 'rooftop');
 for (const modelState of ['failed', 'loading', 'ready']) {
   const independent = harness({modelState}); await independent.settle(); assertView(independent, 'resumo');
   assert.equal(independent.model.innerHTML, 'existing model sentinel'); assert.equal(independent.downloads.innerHTML, 'existing downloads sentinel');
@@ -217,4 +297,4 @@ const failed = harness({failure:true}); await failed.settle();
 assert.equal(failed.errors.length, 1); assert(failed.host.innerHTML.includes('Não foi possível carregar'));
 assert(failed.host.innerHTML.includes('assets/management/rooftop.json'));
 assert.equal(failed.model.innerHTML, 'existing model sentinel'); assert.equal(failed.downloads.innerHTML, 'existing downloads sentinel');
-console.log('PASS: sanitized planning baseline, allowlisted documentary sources, service dependencies, acceptance evidence guard and provisional materials; six management views, repeated tabs/filters, keyboard focus, deep links/history and independent failure fallback. DOM harness only; browser rendering unverified.');
+console.log('PASS: sanitized planning baseline, allowlisted reference sources, service dependencies, acceptance evidence guard and provisional materials; pergola quotation dimensions, 22 pieces / 0.798 m³ nominal wood, non-executive illustration, four table rows and focused deep link; six management views, repeated tabs/filters, keyboard focus, deep links/history and independent failure fallback. DOM harness only; browser rendering unverified.');
